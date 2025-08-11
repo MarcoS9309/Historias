@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Historias de Biblián - Una Saga Familiar</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap');
+        
+        :root {
+            --primary-color: #5D4037;
+            --secondary-color: #8D6E63;
+            --accent-color: #BF8F6A;
+            --gold-color: #D4AF37;
+            --text-color: #3E2723;
+            --bg-color: #F5F2E8;
+            --paper-color: #FAF7F0;
+            --sepia-color: #F4F1E8;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Crimson Text', serif;
+            line-height: 1.8;
+            color: var(--text-color);
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(212, 175, 55, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(141, 110, 99, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 80%, rgba(93, 64, 55, 0.05) 0%, transparent 50%),
+                var(--bg-color);
+            background-attachment: fixed;
+            position: relative;
+        }
+        
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                repeating-linear-gradient(
+                    0deg,
+                    transparent,
+                    transparent 2px,
+                    rgba(93, 64, 55, 0.02) 2px,
+                    rgba(93, 64, 55, 0.02) 4px
+                );
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 80px;
+            background: var(--paper-color);
+            color: var(--text-color);
+            padding: 60px 40px;
+            border-radius: 20px;
+            box-shadow: 
+                0 0 0 1px rgba(93, 64, 55, 0.1),
+                0 20px 40px rgba(93, 64, 55, 0.15),
+                inset 0 1px 0 rgba(255, 255, 255, 0.5);
+            position: relative;
+            border: 3px solid var(--gold-color);
+        }
+        
+        header::before {
+            content: '';
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            right: 15px;
+            bottom: 15px;
+            border: 2px solid var(--accent-color);
+            border-radius: 15px;
+            opacity: 0.3;
+        }
+        
+        h1 {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 3.5em;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+            text-shadow: 2px 2px 4px rgba(93, 64, 55, 0.2);
+            letter-spacing: 2px;
+            position: relative;
+        }
+        
+        h1::after {
+            content: '✦';
+            display: block;
+            font-size: 0.3em;
+            color: var(--gold-color);
+            margin-top: 10px;
+        }
+        
+        .subtitle {
+            font-family: 'Crimson Text', serif;
+            font-size: 1.4em;
+            color: var(--secondary-color);
+            font-style: italic;
+            font-weight: 400;
+            margin-bottom: 20px;
+        }
+        
+        .subtitle::before,
+        .subtitle::after {
+            content: '◆';
+            color: var(--gold-color);
+            margin: 0 15px;
+            font-size: 0.8em;
+        }
+        
+        .story-full {
+            background: var(--paper-color);
+            margin: 60px 0;
+            padding: 50px;
+            border-radius: 15px;
+            box-shadow: 
+                0 0 0 1px rgba(93, 64, 55, 0.1),
+                0 15px 35px rgba(93, 64, 55, 0.12);
+            position: relative;
+            border-left: 5px solid var(--gold-color);
+        }
+        
+        .story-full::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            right: 20px;
+            bottom: 20px;
+            border: 1px solid var(--accent-color);
+            border-radius: 10px;
+            opacity: 0.3;
+        }
+        
+        .story-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 40px;
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 25px;
+        }
+        
+        .story-image-header {
+            width: 120px;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 15px;
+            margin-right: 30px;
+            border: 3px solid var(--gold-color);
+            box-shadow: 0 8px 20px rgba(93, 64, 55, 0.2);
+        }
+        
+        .story-title-section h2 {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 2.2em;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+        }
+        
+        .story-subtitle {
+            font-family: 'Crimson Text', serif;
+            font-size: 1.1em;
+            color: var(--secondary-color);
+            font-style: italic;
+        }
+        
+        .story-content {
+            font-size: 1.1em;
+            line-height: 1.9;
+            color: var(--text-color);
+            text-align: justify;
+            column-count: 1;
+            column-gap: 40px;
+        }
+        
+        .story-content h3 {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 1.5em;
+            color: var(--primary-color);
+            margin: 30px 0 15px 0;
+            border-left: 4px solid var(--gold-color);
+            padding-left: 15px;
+        }
+        
+        .story-content p {
+            margin-bottom: 20px;
+            text-indent: 30px;
+        }
+        
+        .story-content p:first-of-type::first-letter {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 4em;
+            line-height: 1;
+            float: left;
+            margin: 0 8px 0 0;
+            color: var(--gold-color);
+            text-shadow: 2px 2px 4px rgba(93, 64, 55, 0.3);
+        }
+        
+        .characters-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 30px;
+            margin: 60px 0;
+            padding: 40px;
+            background: var(--sepia-color);
+            border-radius: 20px;
+            border: 2px solid var(--accent-color);
+        }
+        
+        .character-card {
+            background: var(--paper-color);
+            padding: 30px 20px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 
+                0 0 0 1px rgba(93, 64, 55, 0.1),
+                0 8px 25px rgba(93, 64, 55, 0.15);
+            border: 2px solid var(--gold-color);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+        }
+        
+        .character-card::before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            right: 10px;
+            bottom: 10px;
+            border: 1px solid var(--accent-color);
+            border-radius: 10px;
+            opacity: 0.3;
+        }
+        
+        .character-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 
+                0 0 0 1px rgba(93, 64, 55, 0.1),
+                0 15px 35px rgba(93, 64, 55, 0.25);
+        }
+        
+        .character-image {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 20px;
+            border: 4px solid var(--gold-color);
+            box-shadow: 0 5px 15px rgba(93, 64, 55, 0.3);
+        }
+        
+        .character-name {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 1.2em;
+            color: var(--primary-color);
+            margin-bottom: 8px;
+            font-weight: 700;
+        }
+        
+        .character-role {
+            font-family: 'Crimson Text', serif;
+            font-style: italic;
+            color: var(--secondary-color);
+            font-size: 0.95em;
+        }
+        
+        .finale-section {
+            background: 
+                linear-gradient(135deg, 
+                    rgba(93, 64, 55, 0.95), 
+                    rgba(141, 110, 99, 0.95)
+                ),
+                url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="%23fff" opacity="0.1"/><circle cx="75" cy="75" r="1" fill="%23fff" opacity="0.1"/><circle cx="25" cy="75" r="1" fill="%23fff" opacity="0.1"/><circle cx="75" cy="25" r="1" fill="%23fff" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+            color: var(--paper-color);
+            padding: 80px 60px;
+            border-radius: 25px;
+            text-align: center;
+            margin-top: 80px;
+            box-shadow: 
+                0 0 0 3px var(--gold-color),
+                0 20px 50px rgba(93, 64, 55, 0.4);
+            position: relative;
+            border: 5px solid var(--accent-color);
+        }
+        
+        .finale-section::before {
+            content: '';
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            right: 15px;
+            bottom: 15px;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+        }
+        
+        .finale-title {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 3em;
+            margin-bottom: 30px;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
+            letter-spacing: 2px;
+            color: var(--gold-color);
+        }
+        
+        .finale-title::after {
+            content: '❋';
+            display: block;
+            font-size: 0.4em;
+            margin-top: 15px;
+            color: var(--paper-color);
+        }
+        
+        .finale-text {
+            font-family: 'Crimson Text', serif;
+            font-size: 1.3em;
+            line-height: 2;
+            max-width: 800px;
+            margin: 0 auto;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px 15px;
+            }
+            
+            header {
+                padding: 40px 25px;
+                margin-bottom: 50px;
+            }
+            
+            h1 {
+                font-size: 2.5em;
+            }
+            
+            .subtitle {
+                font-size: 1.1em;
+            }
+            
+            .story-full {
+                padding: 30px 25px;
+                margin: 40px 0;
+            }
+            
+            .story-header {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .story-image-header {
+                margin-right: 0;
+                margin-bottom: 20px;
+                width: 150px;
+                height: 150px;
+            }
+            
+            .story-content {
+                font-size: 1.05em;
+                text-align: left;
+            }
+            
+            .story-content p:first-of-type::first-letter {
+                font-size: 3em;
+                margin: 0 6px 0 0;
+            }
+            
+            .characters-grid {
+                grid-template-columns: 1fr;
+                padding: 30px 20px;
+            }
+            
+            .finale-section {
+                padding: 50px 30px;
+                margin-top: 50px;
+            }
+            
+            .finale-title {
+                font-size: 2.2em;
+            }
+            
+            .finale-text {
+                font-size: 1.1em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Historias de Biblián</h1>
+            <p class="subtitle">Una saga familiar entre las montañas del Ecuador</p>
+        </header>
+        
+        <section class="characters-section">
+            <h2 style="text-align: center; font-family: 'Libre Baskerville', serif; font-size: 2.5em; color: var(--primary-color); margin-bottom: 20px;">Los Personajes de Biblián</h2>
+            <p style="text-align: center; font-family: 'Crimson Text', serif; font-style: italic; color: var(--secondary-color); font-size: 1.2em; margin-bottom: 40px;">Una familia entrelazada por el tiempo y las tradiciones ancestrales</p>
+            <div class="characters-grid">
+                <div class="character-card">
+                    <img src="imagenes/El_abuelito.jpg" alt="Don Juan Bautista" class="character-image">
+                    <div class="character-name">Don Juan Bautista</div>
+                    <div class="character-role">El Patriarca - Tallador del Sikuri</div>
+                </div>
+                <div class="character-card">
+                    <img src="imagenes/Doña_Carmen.png" alt="Doña Carmen" class="character-image">
+                    <div class="character-name">Doña Carmen</div>
+                    <div class="character-role">La Tejedora - Guardiana de tradiciones</div>
+                </div>
+                <div class="character-card">
+                    <img src="imagenes/Dr_Santiago.png" alt="Santiago" class="character-image">
+                    <div class="character-name">Dr. Santiago</div>
+                    <div class="character-role">El Médico - El nieto que regresó</div>
+                </div>
+                <div class="character-card">
+                    <img src="imagenes/Leo.jpg" alt="Leo" class="character-image">
+                    <div class="character-name">Leo</div>
+                    <div class="character-role">El Puente - Entre tradición y modernidad</div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="stories-section">
+            <!-- Historia 1: El Señor de Jerusalén -->
+            <article class="story-full">
+                <div class="story-header">
+                    <img src="imagenes/Jerusalen.jpg" alt="El Señor de Jerusalén" class="story-image-header">
+                    <div class="story-title-section">
+                        <h2>El Señor de Jerusalén</h2>
+                        <p class="story-subtitle">El corazón de piedra que salvó al pueblo</p>
+                    </div>
+                </div>
+                <div class="story-content">
+                    <p>En esos tiempos duros, cuando el sol rajaba la tierra y la tristeza se sentía en el aire, un hombre llamado Juan caminaba por la quebrada seca. Andaba con el corazón encogido, como todos en el pueblo. Ya no buscaba agua, solo un lugar donde pensar. De repente, su pie golpeó algo duro bajo el polvo.</p>
+                    
+                    <p>Se agachó y con sus manos empezó a sacar una piedra. No era una piedra cualquiera. Tenía una forma rara, como de cabeza, pero también como de un corazón. Le quitó el lodo que tenía encima y, poco a poco, apareció un dibujo con colores que parecían vivos.</p>
+                    
+                    <p>Con la piedra en brazos, corrió al pueblo. La gente se fue juntando a su alrededor. Manuel, el más viejo de todos, se le acercó y la miró con los ojos muy abiertos. <em>"Es él"</em>, dijo con la voz bajita, <em>"es el Señor de Jerusalén que ha venido a vernos"</em>.</p>
+                    
+                    <p>A todos se les puso la piel de gallina. María, que tenía los ojos secos de tanto mirar al cielo sin nubes, empezó a llorar de pura emoción. Inés abrazó fuerte a su niño, sintiendo una pequeña luz de esperanza que nacía en su pecho.</p>
+                    
+                    <p>Esa misma tarde, pusieron la piedra sobre un paño limpio y todo el pueblo se juntó a rezar. No eran rezos bonitos, sino los que salían del alma, pidiendo ayuda. Segundo, un muchacho fuerte, sintió un nudo en la garganta al ver a toda su gente unida, con la misma fe. Y entonces pasó. Una gota de agua, gorda y lenta, cayó justo sobre la piedra. Después otra, y otra más, hasta que un aguacero bueno y fuerte se soltó del cielo, mojando la tierra y las caras felices de la gente.</p>
+                    
+                    <p>Desde ese día, todo cambió. El maíz creció alto y fuerte, las papas engordaron en la tierra y la alegría volvió al pueblo. Mirando la piedra, entendieron la verdad. No era solo un dibujo. Era su propia historia.</p>
+                    
+                    <p>El verde pintado en la roca era el verde de sus campos vivos. El azul era la fe que ahora sentían tan grande. Y las personitas rojas de abajo no eran desconocidos. Eran sus abuelos, sus tatarabuelos, la sangre de su gente que había quedado allí pintada para siempre.</p>
+                    
+                    <p>León, que trabajaba la madera, lo dijo mejor que nadie: <em>"Cada pedacito de esta piedra es un pedacito de nosotros"</em>.</p>
+                    
+                    <p>Por eso, ya nadie pensaba en irse a la ciudad. ¿Para qué? Allá quizás había más plata, pero aquí estaba todo lo que importaba: su gente, su tierra y su santito protector que los cuidaba. Quedarse era lo correcto, era como estar en casa de verdad. El Señor de Jerusalén era el corazón de piedra del pueblo, y su gente era el latido que lo mantenía vivo.</p>
+                </div>
+            </article>
+
+            <!-- Historia 2: El Sikuri del Abuelito -->
+            <article class="story-full">
+                <div class="story-header">
+                    <img src="imagenes/El_abuelito.jpg" alt="El Sikuri del Abuelito" class="story-image-header">
+                    <div class="story-title-section">
+                        <h2>El Sikuri del Abuelito</h2>
+                        <p class="story-subtitle">Las melodías ancestrales talladas en madera</p>
+                    </div>
+                </div>
+                <div class="story-content">
+                    <p>El viento frío que bajaba de los Andes se colaba por las rendijas de la pequeña cabaña, silbando una melodía ancestral que Don Juan Bautista conocía bien. Sus manos, curtidas por años de trabajo en el campo y de abrazar la madera, acariciaban la pequeña figura tallada que reposaba sobre la repisa de la chimenea.</p>
+                    
+                    <h3>El Sikuri</h3>
+                    <p>Era un sikuri, un hombre de madera con un sombrero alón y un poncho raído, aferrado a su zampoña como si fuera la última ancla en medio de una tormenta. Don Juan Bautista lo había tallado hacía muchos años, en una época en que la música de los Andes resonaba con más fuerza en los corazones de su comunidad, aquí en las alturas de Biblián.</p>
+                    
+                    <p>Cada detalle de la figura evocaba recuerdos. El sombrero, como el que usaba su padre cuando iba al mercado de Azogues. El poncho, con las rayas que le recordaban los colores de la tierra y del cielo de su Cañar natal. Y la zampoña, esa hilera de cañas que en sus manos expertas se convertía en la voz de los ríos, de las montañas y de las historias de su pueblo.</p>
+                    
+                    <h3>La Nostalgia de un Legado</h3>
+                    <p>Don Juan Bautista suspiró. Los jóvenes preferían ahora la música que llegaba de lejos, las modas pasajeras que no tenían raíz en la tierra que pisaban. El sonido de la zampoña se escuchaba cada vez menos en las fiestas y en las reuniones comunitarias. Sentía que con cada nota que se apagaba, una parte de su alma se desvanecía también.</p>
+                    
+                    <p>Tomó la figura con cuidado, sintiendo la textura áspera de la madera bajo sus dedos. Recordó las manos de su abuelo enseñándole a cortar las cañas con el ángulo preciso, a unirlas con hilo de lana y a soplar con el alma para extraerles el sonido. Eran lecciones de música, pero también lecciones de vida, de conexión con la naturaleza y con sus ancestros.</p>
+                    
+                    <h3>La Melodía del Atardecer</h3>
+                    <p>Se levantó con dificultad y caminó hacia la ventana. La luz del atardecer teñía las colinas de un dorado melancólico. Cerró los ojos y llevó el pequeño sikuri a sus labios, como si fuera él quien pudiera insuflar vida a la madera inerte. Intentó recordar la melodía antigua, la que hablaba de la Pachamama y del ciclo eterno de la vida y la muerte.</p>
+                    
+                    <p>Una nota temblorosa escapó de sus labios, seguida de otra, más segura. El sonido, aunque débil, llenó la cabaña con una resonancia olvidada. No era el sonido potente y alegre de antaño, pero era una semilla, un pequeño eco de un legado que se negaba a morir.</p>
+                    
+                    <h3>Un Legado que Perdura</h3>
+                    <p>Don Juan Bautista sonrió con tristeza y esperanza. Quizás, solo quizás, si él seguía soplando, si seguía recordando las melodías antiguas, alguien más las escucharía. Quizás, en algún rincón de su comunidad, otro corazón joven sentiría la llamada ancestral de la zampoña y la música volvería a danzar en el viento andino. Y su pequeño sikuri de madera, el guardián de las melodías olvidadas, seguiría contando su historia silenciosa sobre la repisa de la chimenea.</p>
+                </div>
+            </article>
+
+            <!-- Historia 3: La Casa de los Abuelos -->
+            <article class="story-full">
+                <div class="story-header">
+                    <img src="imagenes/La_casa_de_los_abuelos.JPG" alt="La Casa de los Abuelos" class="story-image-header">
+                    <div class="story-title-section">
+                        <h2>La Casa de los Abuelos</h2>
+                        <p class="story-subtitle">El ancla de la familia en las colinas de Biblián</p>
+                    </div>
+                </div>
+                <div class="story-content">
+                    <p>La casa de los abuelos. Así la llamaba Mateo, aunque ya nadie vivía en ella. Se alzaba sobre sus zancos de madera, como un viejo animal cansado, mirando hacia las colinas verdes y ondulantes de Biblián. El cielo, cargado de nubes grises, parecía llorar por ella.</p>
+                    
+                    <p>Cada vez que regresaba de la ciudad, Mateo sentía la necesidad de caminar por el campo de hierba alta hasta llegar a este punto. Se detenía y simplemente la observaba. Podía escuchar el eco de las risas de su infancia, el crujido de las escaleras de madera bajo los pies de su abuela Inés y el sonido de la lluvia golpeando las tejas de barro, un sonido que era la nana de todas sus siestas.</p>
+                    
+                    <p>La pared, una mezcla de bahareque y madera que ahora se desmoronaba, guardaba más historias que cualquier libro. Recordaba el olor a tierra húmeda y a leña quemada que siempre impregnaba el aire. En la abertura del segundo piso, como un fantasma en su puesto, aún estaba la pequeña silla donde su abuelo Manuel se sentaba cada tarde. Desde allí, con la mirada perdida en su sembrío de maíz y papas, juzgaba el clima y decidía el trabajo del día siguiente.</p>
+                    
+                    <p>Los vecinos le habían dicho a Mateo que la derribara. "Ya no sirve, Mateo. Es un peligro", le aconsejaban. Pero para él, no era solo una estructura. Era el ancla de su familia. Su abuelo la había construido con sus propias manos, mezclando el lodo con paja y clavando cada tabla de eucalipto. En esa casa habían nacido sus tíos, había llorado su madre y había soñado él mismo con mundos lejanos que, irónicamente, ahora le parecían vacíos.</p>
+                    
+                    <p>Mientras el viento silbaba a través de las tejas rotas, Mateo se imaginó el calor del fogón, el sabor del mote recién cocido y la seguridad de estar bajo ese techo. La casa estaba herida, sí. El tiempo y el abandono la habían golpeado sin piedad. Pero no estaba muerta.</p>
+                    
+                    <p>En el silencio del campo cañari, roto solo por el viento, Mateo tomó una decisión. No iba a dejar que se cayera. No podía. Arreglaría el techo, reforzaría las paredes, cambiaría las tablas podridas. Lo haría él mismo, como lo hizo el abuelo. Porque esa casa no era una ruina; era una raíz. Y un hombre, por muy lejos que viaje, nunca debe olvidar dónde están sus raíces.</p>
+                </div>
+            </article>
+
+            <!-- Historia 4: La Alfombra Roja -->
+            <article class="story-full">
+                <div class="story-header">
+                    <img src="imagenes/531237694_1785277096199956_3989625793001136708_n.jpg" alt="La Alfombra Roja" class="story-image-header">
+                    <div class="story-title-section">
+                        <h2>La Alfombra Roja</h2>
+                        <p class="story-subtitle">Un fragmento de Biblián desangrándose</p>
+                    </div>
+                </div>
+                <div class="story-content">
+                    <p>Sobre el frío suelo de cemento, la alfombra roja tejida a mano parecía un corazón desangrándose. Sus vibrantes hebras, teñidas con la cochinilla ancestral de los Andes, contrastaban crudamente con la desolación blanca de las paredes y la monotonía gris del suelo. Era como si un trozo de la tierra viva de Biblián hubiera sido arrancado y depositado en este espacio aséptico y sin alma.</p>
+                    
+                    <h3>Las Franjas y la Ruptura</h3>
+                    <p>Las franjas blancas, que usualmente danzaban con un ritmo ondulante como los caminos serpenteantes de la sierra, ahora parecían líneas de falla, grietas en la memoria de un tejido que alguna vez fue completo. Y en el centro, donde la urdimbre y la trama se habían roto, la tierra rojiza se alzaba en un pequeño montículo, como una herida abierta de la que brotaba el mismo suelo que la había visto nacer.</p>
+                    
+                    <h3>Doña Carmen y la Historia de la Alfombra</h3>
+                    <p>Doña Carmen, la tejedora, recordaba el día en que sus manos ágiles habían dado vida a esa alfombra. Cada nudo era una oración, cada color un suspiro de las montañas, cada diseño una historia transmitida de generación en generación. Esta alfombra en particular había sido tejida para la boda de su nieta, un símbolo de calidez, de hogar, de la continuidad de la vida en su comunidad de Cañar.</p>
+                    
+                    <p>Pero la nieta se había ido, seducida por las luces de la ciudad, por promesas de un futuro brillante que parecían contrastar con la vida sencilla y arraigada de Biblián. La alfombra, que había quedado enrollada en un rincón, ahora yacía aquí, en este espacio frío que representaba, para Doña Carmen, la desconexión, el desarraigo.</p>
+                    
+                    <h3>El Montículo de Tierra: Un Acto Simbólico</h3>
+                    <p>El pequeño montículo de tierra que emergía de la ruptura no era casualidad. Después de que su nieta se marchara, Doña Carmen había deshecho parte de la alfombra con rabia y dolor, sintiendo cómo se deshacía también un trozo de su corazón. Y luego, en un acto cargado de simbolismo, había esparcido tierra de su jardín sobre las hebras deshilachadas, como queriendo recordar que, a pesar de todo, el vínculo con la tierra, con las raíces, era indestructible.</p>
+                    
+                    <p>En la distancia, el otro pequeño montón de tierra y fragmentos representaba quizás las pocas cosas que la nieta se había llevado, pequeños trozos de su pasado dispersos en un mundo nuevo e incierto.</p>
+                    
+                    <h3>La Esperanza en la Ruptura</h3>
+                    <p>Doña Carmen no sabía por qué había traído la alfombra a este lugar vacío. Tal vez era un intento desesperado por confrontar la ausencia, por hacer visible la herida. O quizás, en el fondo, al ver la tierra emerger del tejido roto, sentía una tenue esperanza. Que incluso en la ruptura, la vida persiste. Que las raíces, aunque maltratadas, siempre encuentran la manera de reclamar su lugar. Que tal vez, algún día, su nieta recordaría el calor de la alfombra roja y el olor de la tierra de Biblián, y encontraría el camino de regreso a casa.</p>
+                </div>
+            </article>
+
+            <!-- Historia 5: Leo -->
+            <article class="story-full">
+                <div class="story-header">
+                    <img src="imagenes/Leo.jpg" alt="Leo" class="story-image-header">
+                    <div class="story-title-section">
+                        <h2>Leo: El Puente Entre Mundos</h2>
+                        <p class="story-subtitle">Tejiendo el futuro con las fibras del pasado</p>
+                    </div>
+                </div>
+                <div class="story-content">
+                    <p>Leo apagó la música en sus audífonos. El silencio que quedó no estaba vacío; estaba lleno del susurro del viento nocturno de agosto y del suave rasgueo de sus dedos trabajando la lana. Sentado sobre la alfombra roja de su abuela María, la misma que guardaba la cicatriz de la partida, hundía las manos en la nube de vellón crudo.</p>
+                    
+                    <p>A su alrededor, el mundo moderno seguía presente. Los audífonos descansaban sobre su cuello, un puente hacia un universo de ritmos globales. Su chaqueta y zapatillas hablaban de una juventud conectada, la misma que muchos creían ajena a las viejas costumbres de Biblián.</p>
+                    
+                    <p>Pero sus manos contaban otra historia. Con una concentración que sus amigos reservaban para videojuegos o música, Leo escarmenaba la lana. Separaba fibras sucias y ásperas, desenredaba nudos, y transformaba la maraña rústica en una nube suave, lista para ser hilada. Era un trabajo lento, ancestral. El olor terrenal de la lanolina se mezclaba con el aire frío de la sierra.</p>
+                    
+                    <p>Había observado a su abuela María durante años, viendo cómo sus dedos, arrugados y sabios, danzaban con la lana casi sin pensar. Había notado la tristeza en sus ojos al mirar la alfombra rota. Había visto a su primo regresar para cuidar a los ancianos, pero se preguntaba: ¿quién cuidará sus saberes?</p>
+                    
+                    <p>Un día, simplemente, se sentó junto a ella y le pidió que le enseñara. No por obligación, sino por una curiosidad genuina y una punzada de responsabilidad que nacía en su pecho.</p>
+                    
+                    <p>¿Por qué no hilar lana de borrego escuchando rock? ¿Por qué la sabiduría de un tutorial en YouTube no podía convivir con la transmitida en voz baja, de abuela a nieto?</p>
+                    
+                    <p>Doña María, sentada cerca en el umbral, no decía mucho. Pero por primera vez en mucho tiempo, sus ojos no solo reflejaban la melancolía del pasado, sino el brillo de un futuro incipiente. Veía las manos de su nieto, torpes pero decididas, y entendía.</p>
+                    
+                    <p>Leo no estaba abandonando su mundo por el de ella. Estaba tejiendo ambos.</p>
+                    
+                    <p>Sostuvo una porción de lana limpia, tan blanca y etérea como las nubes sobre el cerro de Zhalao. Era un pequeño logro, un primer paso. Y en ese instante, sentado sobre la herida de su familia, sintió que no estaba sobre una ruina, sino sobre un cimiento. Su abuelo Manuel tallaba la memoria en madera. Su primo sanaba el presente con enseñanza.</p>
+                    
+                    <p>Él, Leo, había encontrado su propio camino: hilaría el futuro con las fibras del pasado.</p>
+                    
+                    <p>Volvió a colocarse los audífonos, pero esta vez el ritmo que eligió acompasaba el movimiento de sus manos. La música del mundo ya no lo alejaba de sus raíces; ahora era la banda sonora para volver a ellas.</p>
+                </div>
+            </article>
+        </section>
+        
+        <div class="finale-section">
+            <h2 class="finale-title">Raíces: El Final Épico</h2>
+            <div class="finale-text">
+                <img src="imagenes/Raices.png" alt="Raíces" style="width: 100%; max-width: 600px; border-radius: 15px; margin-bottom: 30px; border: 3px solid var(--gold-color);">
+                <p>En el mirador de Biblián, cuatro generaciones se encuentran bajo el mismo cielo infinito. Don Juan Bautista, con su pequeño sikuri en el bolsillo, se apoya en el brazo de su nieto Santiago. Doña Carmen contempla el paisaje con ojos de tejedora, viendo colores para nuevos tapices. Y Leo, el joven puente entre mundos, captura la imagen que conecta pasado y futuro.</p>
+                <br>
+                <p>Las historias de la casa abandonada, del músico de madera, de la alfombra rota y del joven doctor encuentran su paz aquí. El sikuri tallado por Don Juan Bautista ya no es un guardián solitario, sino la primera nota de una nueva canción. La herida de la alfombra de Doña Carmen comienza a sanar bajo este cielo abierto.</p>
+                <br>
+                <p>Santiago comprende que cuidar el corazón de su pueblo es cuidar el corazón de esta tierra. Leo teje el futuro con las fibras del pasado. Y todos juntos entienden que las raíces verdaderas no se encuentran solo en la tierra, sino en los lazos invisibles que unen a una familia, a una comunidad, a una cultura que se niega a desaparecer.</p>
+                <br>
+                <p><strong>Esta no es una historia sobre el pasado. Es la vista desde el principio.</strong></p>
+                <br>
+                <div style="margin-top: 40px;">
+                    <h3 style="font-family: 'Libre Baskerville', serif; color: var(--gold-color); margin-bottom: 20px;">El Final Completo:</h3>
+                    <div style="background: rgba(255,255,255,0.1); padding: 30px; border-radius: 15px; text-align: justify; font-size: 1.1em; line-height: 2;">
+                        <p>El sol del domingo 10 de agosto caía tibio sobre los hombros de los cuatro caminantes. El aire en las alturas de Biblián era fino y puro, cargado con el aroma del eucalipto y de la paja del páramo. Habían subido por el viejo camino de tierra, el mismo que habían recorrido incontables generaciones, hasta llegar a este mirador natural desde donde la tierra se desplegaba como un poncho tejido por los dioses.</p>
+                        <p><em>Era la vista que contenía todas las demás historias.</em></p>
+                        <p>Los cuatro se quedaron en silencio, juntos. Cuatro generaciones unidas por un solo paisaje. La saga de la casa abandonada, del músico de madera, de la alfombra rota y del joven doctor encontraba su paz aquí, bajo el cielo infinito de Biblián.</p>
+                        <p><strong>No era un final. Era la vista desde el principio.</strong></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Animación suave al hacer scroll
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.story-card, .character-card');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            });
+            
+            cards.forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(30px)';
+                card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(card);
+            });
+        });
+    </script>
+</body>
+</html>
