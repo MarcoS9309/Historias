@@ -28,3 +28,9 @@ Luego visita `http://localhost:8000` y navega a `index.html`.
 ## Licencia
 
 Este proyecto se distribuye bajo los términos de la [Licencia MIT](LICENSE).
+
+## Cambios del 12 de agosto de 2025
+
+- Se eliminaron archivos `.DS_Store` para mantener limpio el repositorio.
+- Se añadió un archivo `.gitignore` para evitar que estos archivos se vuelvan a incluir.
+
