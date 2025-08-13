@@ -16,6 +16,8 @@
             --bg-color: #F5F2E8;
             --paper-color: #FAF7F0;
             --sepia-color: #F4F1E8;
+            --heading-font: 'Libre Baskerville', serif;
+            --body-font: 'Crimson Text', serif;
         }
         
         * {
@@ -25,7 +27,7 @@
         }
         
         body {
-            font-family: 'Crimson Text', serif;
+            font-family: var(--body-font);
             line-height: 1.8;
             color: var(--text-color);
             background: 
@@ -90,7 +92,7 @@
         }
         
         h1 {
-            font-family: 'Libre Baskerville', serif;
+            font-family: var(--heading-font);
             font-size: 3.5em;
             margin-bottom: 15px;
             color: var(--primary-color);
@@ -108,7 +110,7 @@
         }
         
         .subtitle {
-            font-family: 'Crimson Text', serif;
+            font-family: var(--body-font);
             font-size: 1.4em;
             color: var(--secondary-color);
             font-style: italic;
@@ -122,6 +124,23 @@
             color: var(--gold-color);
             margin: 0 15px;
             font-size: 0.8em;
+        }
+
+        .section-title {
+            text-align: center;
+            font-family: var(--heading-font);
+            font-size: 2.5em;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-family: var(--body-font);
+            font-style: italic;
+            color: var(--secondary-color);
+            font-size: 1.2em;
+            margin-bottom: 40px;
         }
         
         .story-full {
@@ -167,7 +186,7 @@
         }
         
         .story-title-section h2 {
-            font-family: 'Libre Baskerville', serif;
+            font-family: var(--heading-font);
             font-size: 2.2em;
             color: var(--primary-color);
             margin-bottom: 10px;
@@ -175,7 +194,7 @@
         }
         
         .story-subtitle {
-            font-family: 'Crimson Text', serif;
+            font-family: var(--body-font);
             font-size: 1.1em;
             color: var(--secondary-color);
             font-style: italic;
@@ -191,7 +210,7 @@
         }
         
         .story-content h3 {
-            font-family: 'Libre Baskerville', serif;
+            font-family: var(--heading-font);
             font-size: 1.5em;
             color: var(--primary-color);
             margin: 30px 0 15px 0;
@@ -205,7 +224,7 @@
         }
         
         .story-content p:first-of-type::first-letter {
-            font-family: 'Libre Baskerville', serif;
+            font-family: var(--heading-font);
             font-size: 4em;
             line-height: 1;
             float: left;
@@ -268,7 +287,7 @@
         }
         
         .character-name {
-            font-family: 'Libre Baskerville', serif;
+            font-family: var(--heading-font);
             font-size: 1.2em;
             color: var(--primary-color);
             margin-bottom: 8px;
@@ -276,16 +295,43 @@
         }
         
         .character-role {
-            font-family: 'Crimson Text', serif;
+            font-family: var(--body-font);
             font-style: italic;
             color: var(--secondary-color);
             font-size: 0.95em;
         }
-        
+
+        .finale-image {
+            width: 100%;
+            max-width: 600px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            border: 3px solid var(--gold-color);
+        }
+
+        .finale-extra {
+            margin-top: 40px;
+        }
+
+        .finale-heading {
+            font-family: var(--heading-font);
+            color: var(--gold-color);
+            margin-bottom: 20px;
+        }
+
+        .finale-block {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 15px;
+            text-align: justify;
+            font-size: 1.1em;
+            line-height: 2;
+        }
+
         .finale-section {
-            background: 
-                linear-gradient(135deg, 
-                    rgba(93, 64, 55, 0.95), 
+            background:
+                linear-gradient(135deg,
+                    rgba(93, 64, 55, 0.95),
                     rgba(141, 110, 99, 0.95)
                 ),
                 url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="%23fff" opacity="0.1"/><circle cx="75" cy="75" r="1" fill="%23fff" opacity="0.1"/><circle cx="25" cy="75" r="1" fill="%23fff" opacity="0.1"/><circle cx="75" cy="25" r="1" fill="%23fff" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
@@ -313,7 +359,7 @@
         }
         
         .finale-title {
-            font-family: 'Libre Baskerville', serif;
+            font-family: var(--heading-font);
             font-size: 3em;
             margin-bottom: 30px;
             text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
@@ -330,7 +376,7 @@
         }
         
         .finale-text {
-            font-family: 'Crimson Text', serif;
+            font-family: var(--body-font);
             font-size: 1.3em;
             line-height: 2;
             max-width: 800px;
@@ -411,8 +457,8 @@
         </header>
         
         <section class="characters-section">
-            <h2 style="text-align: center; font-family: 'Libre Baskerville', serif; font-size: 2.5em; color: var(--primary-color); margin-bottom: 20px;">Los Personajes de Biblián</h2>
-            <p style="text-align: center; font-family: 'Crimson Text', serif; font-style: italic; color: var(--secondary-color); font-size: 1.2em; margin-bottom: 40px;">Una familia entrelazada por el tiempo y las tradiciones ancestrales</p>
+            <h2 class="section-title">Los Personajes de Biblián</h2>
+            <p class="section-subtitle">Una familia entrelazada por el tiempo y las tradiciones ancestrales</p>
             <div class="characters-grid">
                 <div class="character-card">
                     <img src="imagenes/El_abuelito.jpg" alt="Don Juan Bautista" class="character-image">
@@ -592,7 +638,7 @@
         <div class="finale-section">
             <h2 class="finale-title">Raíces: El Final Épico</h2>
             <div class="finale-text">
-                <img src="imagenes/Raices.png" alt="Raíces" style="width: 100%; max-width: 600px; border-radius: 15px; margin-bottom: 30px; border: 3px solid var(--gold-color);">
+                <img src="imagenes/Raices.png" alt="Raíces" class="finale-image">
                 <p>En el mirador de Biblián, cuatro generaciones se encuentran bajo el mismo cielo infinito. Don Juan Bautista, con su pequeño sikuri en el bolsillo, se apoya en el brazo de su nieto Santiago. Doña Carmen contempla el paisaje con ojos de tejedora, viendo colores para nuevos tapices. Y Leo, el joven puente entre mundos, captura la imagen que conecta pasado y futuro.</p>
                 <br>
                 <p>Las historias de la casa abandonada, del músico de madera, de la alfombra rota y del joven doctor encuentran su paz aquí. El sikuri tallado por Don Juan Bautista ya no es un guardián solitario, sino la primera nota de una nueva canción. La herida de la alfombra de Doña Carmen comienza a sanar bajo este cielo abierto.</p>
@@ -601,9 +647,9 @@
                 <br>
                 <p><strong>Esta no es una historia sobre el pasado. Es la vista desde el principio.</strong></p>
                 <br>
-                <div style="margin-top: 40px;">
-                    <h3 style="font-family: 'Libre Baskerville', serif; color: var(--gold-color); margin-bottom: 20px;">El Final Completo:</h3>
-                    <div style="background: rgba(255,255,255,0.1); padding: 30px; border-radius: 15px; text-align: justify; font-size: 1.1em; line-height: 2;">
+                <div class="finale-extra">
+                    <h3 class="finale-heading">El Final Completo:</h3>
+                    <div class="finale-block">
                         <p>El sol del domingo 10 de agosto caía tibio sobre los hombros de los cuatro caminantes. El aire en las alturas de Biblián era fino y puro, cargado con el aroma del eucalipto y de la paja del páramo. Habían subido por el viejo camino de tierra, el mismo que habían recorrido incontables generaciones, hasta llegar a este mirador natural desde donde la tierra se desplegaba como un poncho tejido por los dioses.</p>
                         <p><em>Era la vista que contenía todas las demás historias.</em></p>
                         <p>Los cuatro se quedaron en silencio, juntos. Cuatro generaciones unidas por un solo paisaje. La saga de la casa abandonada, del músico de madera, de la alfombra rota y del joven doctor encontraba su paz aquí, bajo el cielo infinito de Biblián.</p>

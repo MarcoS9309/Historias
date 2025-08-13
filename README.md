@@ -34,3 +34,7 @@ Este proyecto se distribuye bajo los términos de la [Licencia MIT](LICENSE).
 - Se eliminaron archivos `.DS_Store` para mantener limpio el repositorio.
 - Se añadió un archivo `.gitignore` para evitar que estos archivos se vuelvan a incluir.
 
+## Cambios del 15 de marzo de 2026
+
+- Se refactorizó `index.html` para centralizar las fuentes mediante variables CSS y reemplazar estilos en línea por clases reutilizables.
+
