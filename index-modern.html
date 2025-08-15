@@ -395,7 +395,6 @@
           
           <div class="actions">
             <button class="btn" data-toggle="#media-sikuri">Ver ilustración</button>
-            <button class="btn" data-voice="sikuri">Escuchar historia</button>
           </div>
           <div class="media" id="media-sikuri">
             <img alt="El sikuri tallado en madera" loading="lazy" src="imagenes/El_abuelito.jpg" />
@@ -444,7 +443,6 @@
           
           <div class="actions">
             <button class="btn" data-toggle="#media-alfombra">Ver ilustración</button>
-            <button class="btn" data-voice="alfombra">Escuchar historia</button>
           </div>
           <div class="media" id="media-alfombra">
             <img alt="La alfombra tejida con amor" loading="lazy" src="imagenes/Raices.png" />
@@ -498,7 +496,6 @@
           
           <div class="actions">
             <button class="btn" data-toggle="#media-leo">Ver ilustración</button>
-            <button class="btn" data-voice="leo">Escuchar historia</button>
           </div>
           <div class="media" id="media-leo">
             <img alt="Leo con su guitarra" loading="lazy" src="imagenes/Leo.jpg" />
@@ -540,7 +537,6 @@
           
           <div class="actions">
             <button class="btn" data-toggle="#media-jerusalen">Ver ilustración</button>
-            <button class="btn" data-voice="jerusalen">Escuchar historia</button>
           </div>
           <div class="media" id="media-jerusalen">
             <img alt="El Señor de Jerusalén" loading="lazy" src="imagenes/Jerusalen.jpg" />
@@ -575,7 +571,6 @@
           
           <div class="actions">
             <button class="btn" data-toggle="#media-casa">Ver ilustración</button>
-            <button class="btn" data-voice="casa">Escuchar historia</button>
           </div>
           <div class="media" id="media-casa">
             <img alt="La casa de los abuelos" loading="lazy" src="imagenes/La_casa_de_los_abuelos.JPG" />
@@ -618,25 +613,6 @@
         tgt.style.display = (tgt.style.display==='block' ? 'none' : 'block'); 
       }
     }
-  });
-
-  // ======= Lectura en voz (Web Speech API) =======
-  function speak(text){
-    if(!('speechSynthesis' in window)) return alert('Función de voz no disponible en este navegador.');
-    window.speechSynthesis.cancel();
-    const utterance = new SpeechSynthesisUtterance(text);
-    utterance.lang = 'es-ES';
-    utterance.rate = 0.9;
-    utterance.pitch = 1.1;
-    speechSynthesis.speak(utterance);
-  }
-  
-  document.addEventListener('click',(ev)=>{
-    const btn = ev.target.closest('[data-voice]');
-    if(!btn) return;
-    const id = btn.getAttribute('data-voice');
-    const leadText = document.querySelector('#'+id+' .lead')?.textContent?.trim();
-    if(leadText) speak(leadText);
   });
 
   // ======= Modo claro/oscuro =======
