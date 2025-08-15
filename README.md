@@ -1,6 +1,6 @@
-# Historias de Biblián
+# Tejido Social y Relatos
 
-Una saga familiar entrelazada por el tiempo y las tradiciones ancestrales en las montañas del Ecuador.
+Historias de innovación y creatividad que construyen narrativas comunitarias a través del arte de tejer relatos y rememorar tradiciones.
 
 ## Estructura del Proyecto
 
@@ -24,5 +24,9 @@ Una saga familiar entrelazada por el tiempo y las tradiciones ancestrales en las
 - **Dr. Santiago** - El nieto médico que regresó
 - **Leo** - El puente entre mundos
 
+## 🧵 Nota Importante
+
+**Todas estas historias son ficción** y tienen por carácter la **innovación**, **creatividad**, el **tejido de relatos** y la **rememoranza de narrativas**. Su propósito es crear un espacio donde se compartan historias que construyan tejido social, evitando el mal uso de redes sociales y fomentando la expresión creativa comunitaria.
+
 ---
-*Proyecto limpio y coherente - Agosto 2025* 
+*Proyecto de tejido social y narrativo - Agosto 2025* 
