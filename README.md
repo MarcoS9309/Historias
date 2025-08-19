@@ -99,6 +99,12 @@ Para una experiencia narrativa coherente, recomendamos leer en este orden:
 
 **Todas estas historias son ficción** y tienen por carácter la **innovación**, **creatividad**, el **tejido de relatos** y la **rememoranza de narrativas**. Su propósito es crear un espacio donde se compartan historias que construyan tejido social, evitando el mal uso de redes sociales y fomentando la expresión creativa comunitaria.
 
+## 📄 Licencia y Seguridad
+
+Este proyecto está licenciado bajo [Creative Commons Attribution-ShareAlike 4.0 International License](LICENSE). Eres libre de compartir y adaptar el contenido con la debida atribución.
+
+Para reportar problemas de seguridad, consulta nuestras [políticas de seguridad](SECURITY.md).
+
 ---
 *Proyecto de tejido social y narrativo - Agosto 2025*  
 *Por Marco* | [GitHub](https://github.com/MarcoS9309) | [X (Twitter)](https://x.com/MarcoS9309)
