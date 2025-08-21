@@ -5,6 +5,20 @@
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <meta name="description" content="Historias de innovación y creatividad que construyen narrativas comunitarias a través del arte de tejer relatos y rememorar tradiciones en Biblián, Ecuador." />
 <title>Tejido Social y Relatos — Historias de innovación y creatividad</title>
+
+<!-- Preload de fuentes críticas para mejor rendimiento -->
+<link rel="preload" href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap"></noscript>
+
+<!-- Meta tags para SEO y redes sociales -->
+<meta property="og:title" content="Tejido Social y Relatos — Historias de innovación y creatividad">
+<meta property="og:description" content="Historias de innovación y creatividad que construyen narrativas comunitarias a través del arte de tejer relatos y rememorar tradiciones en Biblián, Ecuador.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://marcos9309.github.io/Historias/">
+<meta property="og:image" content="https://marcos9309.github.io/Historias/imagenes/La_Alfombra_Roja.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:creator" content="@MarcoS9309">
+<meta name="theme-color" content="#58a6ff">
 <style>
   /* ======= Tokens GitHub/Spark/VSCode ======= */
   :root{
@@ -29,12 +43,37 @@
     --lead: 1.7;
   }
 
-  /* Importar fuentes vintage */
-  @import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap');
+  /* Importar fuentes vintage con display optimizado */
+  /* @import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap') layer(fonts); */
+  /* Fonts now loaded via preload in head for better performance */
 
+  /* ======= Optimizaciones para rendimiento ======= */
   html, body {
     height: 100%;
     scroll-behavior: smooth;
+  }
+
+  /* Optimizar renderizado */
+  * {
+    box-sizing: border-box;
+  }
+  
+  /* Mejorar performance de animaciones */
+  article, .character-card, .btn, .story-image-header {
+    will-change: transform, opacity;
+  }
+
+  /* Reducir motion para usuarios sensibles */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+    
+    html {
+      scroll-behavior: auto;
+    }
   }
   
   body{
@@ -137,6 +176,8 @@
   
   article{
     background: var(--surface);
+    /* Fallback para navegadores sin soporte para color-mix */
+    border: 1px solid rgba(88, 166, 255, 0.15);
     border: 1px solid color-mix(in oklab, var(--accent) 15%, transparent);
     border-radius: var(--radius);
     padding: calc(var(--space) * 2);
@@ -148,12 +189,17 @@
     box-shadow: 0 4px 16px rgba(0,0,0,0.1);
   }
 
-  /* Borde sutil moderno */
+  /* Borde sutil moderno con fallback */
   article::before {
     content: '';
     position: absolute;
     top: 0; left: 0; right: 0; bottom: 0;
     border-radius: var(--radius);
+    /* Fallback para navegadores sin color-mix */
+    background: linear-gradient(135deg, 
+      rgba(88, 166, 255, 0.05),
+      rgba(59, 169, 80, 0.03)
+    );
     background: linear-gradient(135deg, 
       color-mix(in oklab, var(--accent) 5%, transparent),
       color-mix(in oklab, var(--success) 3%, transparent)
@@ -176,6 +222,7 @@
     border-bottom: 1px solid color-mix(in oklab, var(--accent) 20%, transparent);
   }
 
+  /* ======= Estados de carga mejorados ======= */
   .story-image-header {
     width: 80px;
     height: 80px;
@@ -183,6 +230,19 @@
     object-fit: cover;
     border: 2px solid var(--accent);
     flex-shrink: 0;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    background: color-mix(in oklab, var(--surface) 80%, var(--accent) 20%);
+  }
+
+  .story-image-header:not([src]),
+  .story-image-header[src=""] {
+    opacity: 0.6;
+    transform: scale(0.95);
+  }
+
+  .story-image-header:hover {
+    transform: scale(1.05);
+  }
   }
 
   .story-title-section h2 {
@@ -269,14 +329,46 @@
     font-family: 'Crimson Text', serif;
     transition: all 0.3s ease;
     text-decoration: none;
-    display: inline-block;
+    position: relative;
+    overflow: hidden;
   }
   
   .btn:hover{ 
     border-color: var(--accent);
     background: var(--accent);
     color: var(--bg);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(88, 166, 255, 0.2);
+  }
+
+  .btn:active {
     transform: translateY(-1px);
+    box-shadow: 0 3px 8px rgba(88, 166, 255, 0.15);
+  }
+
+  .btn:focus {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+
+  /* Efecto sutil de feedback al hacer clic */
+  .btn::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    transform: translate(-50%, -50%);
+    transition: width 0.2s ease, height 0.2s ease;
+    pointer-events: none;
+  }
+
+  .btn:active::after {
+    width: 120px;
+    height: 120px;
   }
   
   .media{
@@ -348,7 +440,9 @@
         <a href="#finale">Reflexión</a>
       </nav>
       <div style="margin-left:auto;">
-        <button class="btn" id="toggleTheme" aria-pressed="false" title="Cambiar tema">☾/☼</button>
+        <button class="btn" id="toggleTheme" aria-pressed="false" aria-label="Alternar entre tema claro y oscuro" title="Cambiar tema (Ctrl+Shift+T)">
+          <span aria-hidden="true">☾/☼</span>
+        </button>
       </div>
     </div>
   </header>
@@ -659,55 +753,203 @@
   </main>
 
 <script>
-  // ======= Revelado progresivo (IntersectionObserver) =======
-  const io = new IntersectionObserver(entries=>{
-    entries.forEach(e=>{
-      if(e.isIntersecting) e.target.classList.add('is-visible');
-    });
-  },{threshold: .15});
-
-  document.querySelectorAll('article, .character-card').forEach(n=>io.observe(n));
-
-  // ======= Toggle de módulos multimedia =======
-  document.addEventListener('click',(ev)=>{
-    const btn = ev.target.closest('[data-toggle]');
-    if(btn){
-      const tgt = document.querySelector(btn.dataset.toggle);
-      if(tgt){ 
-        tgt.style.display = (tgt.style.display==='block' ? 'none' : 'block'); 
-      }
-    }
+  // ======= Manejo de errores global para mejor estabilidad =======
+  window.addEventListener('error', function(e) {
+    console.warn('Error capturado:', e.error?.message || 'Error desconocido');
   });
 
-  // ======= Modo claro/oscuro =======
-  const toggle = document.getElementById('toggleTheme');
-  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-  
-  // Inicializar tema
-  if(localStorage.getItem('theme') === 'light' || (!localStorage.getItem('theme') && !prefersDark)) {
-    document.documentElement.classList.add('light');
-    toggle.setAttribute('aria-pressed', 'true');
-  }
-  
-  toggle.addEventListener('click', ()=>{
-    const isLight = document.documentElement.classList.toggle('light');
-    toggle.setAttribute('aria-pressed', isLight ? 'true' : 'false');
-    localStorage.setItem('theme', isLight ? 'light' : 'dark');
-  });
+  // ======= Revelado progresivo (IntersectionObserver) con fallback =======
+  function initProgressiveReveal() {
+    try {
+      if ('IntersectionObserver' in window) {
+        const io = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-visible');
+            }
+          });
+        }, { 
+          threshold: 0.15,
+          rootMargin: '50px 0px'
+        });
 
-  // ======= Smooth scroll para navegación =======
-  document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-      e.preventDefault();
-      const target = document.querySelector(this.getAttribute('href'));
-      if(target) {
-        target.scrollIntoView({
-          behavior: 'smooth',
-          block: 'start'
+        document.querySelectorAll('article, .character-card').forEach(element => {
+          if (element) io.observe(element);
+        });
+      } else {
+        // Fallback para navegadores sin IntersectionObserver
+        document.querySelectorAll('article, .character-card').forEach(element => {
+          if (element) element.classList.add('is-visible');
         });
       }
-    });
-  });
+    } catch (error) {
+      console.warn('Error en revelado progresivo:', error);
+      // Fallback: mostrar todos los elementos
+      document.querySelectorAll('article, .character-card').forEach(element => {
+        if (element) element.classList.add('is-visible');
+      });
+    }
+  }
+
+  // ======= Toggle de módulos multimedia con manejo de errores =======
+  function initMediaToggle() {
+    try {
+      document.addEventListener('click', (event) => {
+        const button = event.target.closest('[data-toggle]');
+        if (!button || !button.dataset.toggle) return;
+
+        const targetSelector = button.dataset.toggle;
+        const targetElement = document.querySelector(targetSelector);
+        
+        if (targetElement) {
+          const isVisible = targetElement.style.display === 'block';
+          targetElement.style.display = isVisible ? 'none' : 'block';
+          
+          // Mejorar accesibilidad
+          button.setAttribute('aria-expanded', isVisible ? 'false' : 'true');
+        } else {
+          console.warn(`Elemento no encontrado para selector: ${targetSelector}`);
+        }
+      });
+    } catch (error) {
+      console.warn('Error en toggle multimedia:', error);
+    }
+  }
+
+  // ======= Modo claro/oscuro con validación robusta =======
+  function initThemeToggle() {
+    try {
+      const toggleButton = document.getElementById('toggleTheme');
+      if (!toggleButton) {
+        console.warn('Botón de toggle de tema no encontrado');
+        return;
+      }
+
+      const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      
+      // Inicializar tema con validación
+      const savedTheme = localStorage.getItem('theme');
+      const shouldUseLightTheme = savedTheme === 'light' || (!savedTheme && !prefersDark);
+      
+      if (shouldUseLightTheme) {
+        document.documentElement.classList.add('light');
+        toggleButton.setAttribute('aria-pressed', 'true');
+      }
+      
+      toggleButton.addEventListener('click', () => {
+        try {
+          const isLight = document.documentElement.classList.toggle('light');
+          toggleButton.setAttribute('aria-pressed', isLight ? 'true' : 'false');
+          localStorage.setItem('theme', isLight ? 'light' : 'dark');
+        } catch (error) {
+          console.warn('Error al cambiar tema:', error);
+        }
+      });
+
+      // Escuchar cambios en preferencias del sistema
+      if (window.matchMedia) {
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+          if (!localStorage.getItem('theme')) {
+            const shouldBeDark = e.matches;
+            document.documentElement.classList.toggle('light', !shouldBeDark);
+            toggleButton.setAttribute('aria-pressed', shouldBeDark ? 'false' : 'true');
+          }
+        });
+      }
+
+      // Agregar soporte para atajo de teclado (Ctrl+Shift+T)
+      document.addEventListener('keydown', (event) => {
+        if (event.ctrlKey && event.shiftKey && event.key === 'T') {
+          event.preventDefault();
+          toggleButton.click();
+        }
+      });
+    } catch (error) {
+      console.warn('Error en inicialización de tema:', error);
+    }
+  }
+
+  // ======= Smooth scroll mejorado para navegación =======
+  function initSmoothScroll() {
+    try {
+      document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
+        if (!anchor) return;
+        
+        anchor.addEventListener('click', function (event) {
+          try {
+            event.preventDefault();
+            const targetId = this.getAttribute('href');
+            const targetElement = document.querySelector(targetId);
+            
+            if (targetElement) {
+              targetElement.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+              });
+            } else {
+              console.warn(`Elemento no encontrado para navegación: ${targetId}`);
+            }
+          } catch (error) {
+            console.warn('Error en smooth scroll:', error);
+            // Fallback a navegación normal
+            window.location.hash = this.getAttribute('href');
+          }
+        });
+      });
+    } catch (error) {
+      console.warn('Error en inicialización de smooth scroll:', error);
+    }
+  }
+
+  // ======= Manejo mejorado de imágenes =======
+  function initImageOptimization() {
+    try {
+      const images = document.querySelectorAll('img[loading="lazy"]');
+      
+      images.forEach(img => {
+        // Agregar estado de carga
+        img.style.filter = 'blur(2px)';
+        img.style.transition = 'filter 0.3s ease';
+        
+        const handleImageLoad = () => {
+          img.style.filter = 'none';
+          img.classList.add('loaded');
+        };
+        
+        const handleImageError = () => {
+          console.warn(`Error cargando imagen: ${img.src}`);
+          img.style.filter = 'none';
+          img.style.opacity = '0.6';
+          // Opcional: agregar imagen placeholder o ícono de error
+        };
+        
+        if (img.complete) {
+          handleImageLoad();
+        } else {
+          img.addEventListener('load', handleImageLoad, { once: true });
+          img.addEventListener('error', handleImageError, { once: true });
+        }
+      });
+    } catch (error) {
+      console.warn('Error en optimización de imágenes:', error);
+    }
+  }
+
+  // ======= Inicialización cuando el DOM esté listo =======
+  function initializeApp() {
+    initProgressiveReveal();
+    initMediaToggle();
+    initThemeToggle();
+    initSmoothScroll();
+    initImageOptimization();
+  }
+
+  // Ejecutar cuando el DOM esté completamente cargado
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initializeApp);
+  } else {
+    initializeApp();
+  }
 </script>
 </body>
 </html>
