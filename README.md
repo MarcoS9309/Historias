@@ -108,3 +108,11 @@ Para reportar problemas de seguridad, consulta nuestras [políticas de seguridad
 ---
 *Proyecto de tejido social y narrativo - Agosto 2025*  
 *Por Marco* | [GitHub](https://github.com/MarcoS9309) | [X (Twitter)](https://x.com/MarcoS9309)
+## Proceso de refactorización
+
+Para mejorar el mantenimiento y la claridad del código:
+- Los estilos en línea de `index.html` se movieron a `styles.css`.
+- El script en línea se trasladó a `app.js` y se carga de forma diferida.
+- `index.html` ahora referencia estos archivos externos.
+
+Este README documenta el proceso de refactorización realizado.
