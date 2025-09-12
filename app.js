@@ -2,6 +2,9 @@
   window.addEventListener('error', function(e) {
     console.warn('Error capturado:', e.error?.message || 'Error desconocido');
   });
+  window.addEventListener('unhandledrejection', function(e) {
+    console.warn('Promesa rechazada sin capturar:', e.reason?.message || e.reason || 'Error desconocido');
+  });
 
   // ======= Revelado progresivo (IntersectionObserver) con fallback =======
   function initProgressiveReveal() {
